@@ -1,0 +1,88 @@
+﻿@model ML.Empleado
+@{
+    ViewBag.Title = "GetAll";
+}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleado</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/CrudAJAX.js"></script>
+</head>
+<body>
+
+    <h1 class="text-center">Empleado</h1>
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">
+        Agregar
+    </button>
+    <br />
+    <br />
+    <table id="tabla-empleados" class="table table-light table-striped table-bordered border-primary text-center">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Numero de Nomina</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido Paterno</th>
+                <th scope="col">Apellido Materno</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Modificar</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Empleados</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="NumeroNomina">NumeroNomina</label>
+                            <input type="text" class="form-control" id="NumeroNomina" name="NumeroNomina" placeholder="NumeroNomina" disabled="disabled" />
+                            @*@Html.TextBoxFor(model => model.NumeroNomina, new { @class = "Form-control" })*@
+                        </div>
+                        <div class="form-group">
+                            <label for="Nombre">Nombre</label>
+                            <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre" />
+                            @*@Html.TextBoxFor(model => model.Nombre, new { @class = "Form-control" })*@
+                        </div>
+                        <div class="form-group">
+                            <label for="ApellidoPaterno">Apellido Paterno</label>
+                            <input type="text" class="form-control" id="ApellidoPaterno" name="ApellidoPaterno" placeholder="ApellidoPaterno" />
+                            @*@Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "Form-control" })*@
+                        </div>
+                        <div class="form-group">
+                            <label for="ApellidoMaterno">Apellido Materno</label>
+                            <input type="text" class="form-control" id="ApellidoMaterno" name="ApellidoMaterno" placeholder="ApellidoMaterno" />
+                            @*@Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "Form-control" })*@
+                        </div>
+                        <div class="form-group">
+                            <label for="IdEstado">Estado</label>
+                            <select class="form-control" id="IdEstado" name="IdEstado"></select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Agregar</button>
+                    <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();">Actulizar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
